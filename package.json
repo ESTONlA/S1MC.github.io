@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "homepage": "https://estonla.github.io./S1MC.github.io",
+  "homepage": "https://estonla.github.io/S1MC.github.io",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
