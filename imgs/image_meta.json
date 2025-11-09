@@ -1,0 +1,92 @@
+[
+  {
+    "query": "Modern MCreator interface showing the updated design with flat modern look",
+    "image_info": {
+      "url": "https://cdn.mcreator.net/image/articles/uirefresh2024/newworkspace.png",
+      "img_format": "PNG",
+      "mode": "P",
+      "file_size": 108823,
+      "width": 810,
+      "height": 671,
+      "total_pixels": 543510,
+      "basic_score": 0.8554720315727474,
+      "file_name": "mcreator_modern_ui_3.png"
+    },
+    "llm_score": null
+  },
+  {
+    "query": "Modern MCreator interface showing the updated design with flat modern look",
+    "image_info": {
+      "url": "https://cdn.mcreator.net/image/articles/2025.2/editorsearch.gif",
+      "img_format": "GIF",
+      "mode": "P",
+      "file_size": 289349,
+      "width": 810,
+      "height": 526,
+      "total_pixels": 426060,
+      "basic_score": 0.8158227360449962,
+      "file_name": "mcreator_modern_ui_6.gif"
+    },
+    "llm_score": null
+  },
+  {
+    "query": "Modern MCreator interface showing the updated design with flat modern look",
+    "image_info": {
+      "url": "https://cdn.mcreator.net/image/articles/2025.3/excludefilter.png",
+      "img_format": "PNG",
+      "mode": "P",
+      "file_size": 83158,
+      "width": 810,
+      "height": 501,
+      "total_pixels": 405810,
+      "basic_score": 0.813625865264884,
+      "file_name": "mcreator_modern_ui_9.png"
+    },
+    "llm_score": null
+  },
+  {
+    "query": "Screenshot of MCreator mod maker software interface showing the main workspace with toolbars and panels",
+    "image_info": {
+      "url": "https://cdn.mcreator.net/image/articles/uirefresh2024/newworkspace.png",
+      "img_format": "PNG",
+      "mode": "P",
+      "file_size": 108823,
+      "width": 810,
+      "height": 671,
+      "total_pixels": 543510,
+      "basic_score": 0.8554720315727474,
+      "file_name": "mcreator_interface_2.png"
+    },
+    "llm_score": null
+  },
+  {
+    "query": "Screenshot of MCreator mod maker software interface showing the main workspace with toolbars and panels",
+    "image_info": {
+      "url": "https://cdn.mcreator.net/sites/default/files/wiki/%5B2%5D%20Project%20Creation.png",
+      "img_format": "PNG",
+      "mode": "RGBA",
+      "file_size": 47685,
+      "width": 694,
+      "height": 657,
+      "total_pixels": 455958,
+      "basic_score": 0.8276708951959647,
+      "file_name": "mcreator_interface_3.png"
+    },
+    "llm_score": null
+  },
+  {
+    "query": "Screenshot of MCreator mod maker software interface showing the main workspace with toolbars and panels",
+    "image_info": {
+      "url": "https://cdn.mcreator.net/sites/default/files/wiki/procedureforminecraftlinksensorexmaple2.PNG",
+      "img_format": "PNG",
+      "mode": "RGBA",
+      "file_size": 218210,
+      "width": 800,
+      "height": 483,
+      "total_pixels": 386400,
+      "basic_score": 0.8230080408856691,
+      "file_name": "mcreator_interface_5.PNG"
+    },
+    "llm_score": null
+  }
+]
