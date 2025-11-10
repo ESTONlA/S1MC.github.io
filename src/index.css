@@ -3,32 +3,31 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    @apply border-border-default;
+  :root {
+    color-scheme: dark;
   }
-  
+
+  * {
+    @apply border-s1-forest/40;
+  }
+
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
-    @apply bg-bg-page text-text-primary font-sans antialiased;
+    @apply bg-s1-ink font-sans text-s1-sand antialiased;
   }
-  
-  html {
-    @apply bg-bg-page;
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
   }
 }
 
 @layer utilities {
-  .text-label {
-    @apply text-xs font-medium uppercase tracking-wider;
-  }
-  
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  .text-balance {
+    text-wrap: balance;
   }
 }
