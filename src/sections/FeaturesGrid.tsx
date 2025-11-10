@@ -10,17 +10,17 @@ export function FeaturesGrid() {
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ['start 0.8', 'end 0.2'],
+    offset: ['start 0.8', 'end 0.4'],
   })
 
-  const headingOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1])
-  const headingY = useTransform(scrollYProgress, [0, 0.3], [32, 0])
+  const headingOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1])
+  const headingY = useTransform(scrollYProgress, [0, 0.2], [32, 0])
 
   const featureHover = prefersReducedMotion
     ? {}
     : {
         whileHover: { scale: 1.02 },
-        transition: { type: 'spring', stiffness: 200, damping: 24 },
+        transition: { type: 'spring' as const, stiffness: 200, damping: 24 },
       }
 
   return (
@@ -41,8 +41,8 @@ export function FeaturesGrid() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {featureList.map((feature, index) => {
             const totalFeatures = featureList.length
-            const featureStart = 0.2 + (index / totalFeatures) * 0.5
-            const featureEnd = featureStart + 0.25
+            const featureStart = 0.15 + (index / totalFeatures) * 0.35
+            const featureEnd = featureStart + 0.18
             
             const featureProgress = useTransform(
               scrollYProgress,
@@ -57,7 +57,7 @@ export function FeaturesGrid() {
             return (
               <motion.article
                 key={feature.title}
-                className="flex flex-col rounded-[18px] border border-s1-forest/40 bg-s1-deep/50 p-6 shadow-card"
+                className="orbit-panel rounded-[18px] border border-s1-forest/40 bg-s1-deep/50 p-6 shadow-card"
                 style={{
                   opacity: prefersReducedMotion ? 1 : featureOpacity,
                   y: prefersReducedMotion ? 0 : featureY,
@@ -65,12 +65,14 @@ export function FeaturesGrid() {
                 }}
                 {...featureHover}
               >
-                <div className="mb-4 inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-s1-sand/80">
-                  <feature.icon size={18} className="text-s1-sand" />
-                  {feature.meta}
+                <div className="orbit-panel-inner flex h-full flex-col">
+                  <div className="mb-4 inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-s1-sand/80">
+                    <feature.icon size={18} className="text-s1-sand" />
+                    {feature.meta}
+                  </div>
+                  <h3 className="font-display text-2xl text-s1-sand">{feature.title}</h3>
+                  <p className="mt-3 text-sm text-s1-sand/80">{feature.description}</p>
                 </div>
-                <h3 className="font-display text-2xl text-s1-sand">{feature.title}</h3>
-                <p className="mt-3 text-sm text-s1-sand/80">{feature.description}</p>
               </motion.article>
             )
           })}

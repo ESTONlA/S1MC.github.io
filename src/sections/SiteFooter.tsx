@@ -25,7 +25,7 @@ export function SiteFooter() {
     ? {}
     : {
         whileHover: { translateY: -1, scale: 1.05 },
-        transition: { type: 'spring', stiffness: 260, damping: 24 },
+        transition: { type: 'spring' as const, stiffness: 260, damping: 24 },
       }
 
   return (

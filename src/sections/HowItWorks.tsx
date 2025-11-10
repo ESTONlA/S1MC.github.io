@@ -16,6 +16,13 @@ export function HowItWorks() {
   const headingOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1])
   const headingY = useTransform(scrollYProgress, [0, 0.25], [32, 0])
 
+  const stepHover = prefersReducedMotion
+    ? {}
+    : {
+        whileHover: { scale: 1.02 },
+        transition: { type: 'spring' as const, stiffness: 200, damping: 24 },
+      }
+
   return (
     <motion.section
       ref={sectionRef}
@@ -54,18 +61,21 @@ export function HowItWorks() {
             return (
               <motion.div
                 key={step.title}
-                className="rounded-[16px] border border-s1-forest/40 bg-s1-ink/40 p-6 shadow-card"
+                className="orbit-panel rounded-[16px] border border-s1-forest/40 bg-s1-ink/40 p-6 shadow-card"
                 style={{
                   opacity: prefersReducedMotion ? 1 : stepOpacity,
                   x: prefersReducedMotion ? 0 : stepX,
                   scale: prefersReducedMotion ? 1 : stepScale,
                 }}
+                {...stepHover}
               >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full border border-s1-forest/40 bg-s1-deep/70 text-s1-sand">
-                  <step.icon size={20} />
+                <div className="orbit-panel-inner space-y-3">
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full border border-s1-forest/40 bg-s1-deep/70 text-s1-sand">
+                    <step.icon size={20} />
+                  </div>
+                  <h3 className="font-display text-xl text-s1-sand">{step.title}</h3>
+                  <p className="mt-2 text-sm text-s1-sand/75">{step.description}</p>
                 </div>
-                <h3 className="font-display text-xl text-s1-sand">{step.title}</h3>
-                <p className="mt-2 text-sm text-s1-sand/75">{step.description}</p>
               </motion.div>
             )
           })}

@@ -20,7 +20,6 @@ function LenisProvider({ children }: { children: ReactNode }) {
       duration: 0.9,
       easing: (t) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
-      smoothTouch: true,
     })
 
     let frameId: number

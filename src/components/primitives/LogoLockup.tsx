@@ -30,7 +30,7 @@ export function LogoLockup({ logos }: LogoLockupProps) {
     ? {}
     : {
         whileHover: { translateY: -2, scale: 1.03 },
-        transition: { type: 'spring', stiffness: 210, damping: 24 },
+        transition: { type: 'spring' as const, stiffness: 210, damping: 24 },
       }
   const logoMotion = prefersReducedMotion ? {} : { variants: logoVariant }
 

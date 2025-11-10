@@ -112,7 +112,7 @@ export function Hero() {
         </nav>
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           <motion.div className="space-y-8 lg:col-span-6" {...heroCopyReveal}>
-            <Badge className="border-0 bg-s1-forest/40 text-s1-sand">Built for S1API / MelonLoader</Badge>
+            <Badge className="border-0 bg-s1-forest/40 text-s1-sand">Built for S1API & MelonLoader</Badge>
             <div className="space-y-6">
               <h1 className="font-display text-4xl leading-tight tracking-tight text-s1-sand sm:text-5xl xl:text-6xl">
                 Create Schedule One mods visually.
@@ -141,9 +141,9 @@ export function Hero() {
             </p>
           </motion.div>
           <motion.div className="lg:col-span-6" {...heroCardReveal}>
-            <div className="relative rounded-[20px] border border-s1-forest/40 bg-gradient-to-br from-s1-deep/70 to-s1-ink/80 p-8 shadow-card">
+            <div className="orbit-panel relative rounded-[20px] border border-s1-forest/40 bg-gradient-to-br from-s1-deep/70 to-s1-ink/80 p-8 shadow-card">
               <div className="absolute inset-x-10 top-6 h-16 rounded-full bg-s1-sand/10 blur-3xl" aria-hidden="true" />
-              <div className="relative space-y-6">
+              <div className="orbit-panel-inner relative space-y-6">
                 <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-s1-sand/70">
                   <span>Live canvas</span>
                   <span className="inline-flex items-center gap-2 text-s1-sand">
@@ -171,13 +171,15 @@ export function Hero() {
                   {heroStats.map((stat) => (
                     <div
                       key={`${stat.label}-sm`}
-                      className="rounded-[14px] border border-s1-forest/30 bg-s1-deep/40 px-4 py-3 text-xs uppercase tracking-[0.3em] text-s1-sand/80"
+                      className="orbit-panel rounded-[14px] border border-s1-forest/30 bg-s1-deep/40 text-xs uppercase tracking-[0.3em] text-s1-sand/80"
                     >
-                      {stat.label}
-                      <p className="mt-2 text-base font-display normal-case tracking-normal text-s1-sand">
-                        {stat.value}
-                      </p>
-                      <p className="text-[0.65rem] tracking-[0.4em] text-s1-sand/60">{stat.meta}</p>
+                      <div className="orbit-panel-inner px-4 py-3">
+                        {stat.label}
+                        <p className="mt-2 text-base font-display normal-case tracking-normal text-s1-sand">
+                          {stat.value}
+                        </p>
+                        <p className="text-[0.65rem] tracking-[0.4em] text-s1-sand/60">{stat.meta}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
