@@ -29,6 +29,13 @@ export type DemoClip = {
   }
 }
 
+// Helper to get asset path with base URL for GitHub Pages compatibility
+const getAssetPath = (path: string) => {
+  // Remove leading slash if present, then prepend base URL
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path
+  return `${import.meta.env.BASE_URL}${cleanPath}`
+}
+
 export const demoClips: DemoClip[] = [
   {
     id: 'quest-flow',
@@ -39,7 +46,7 @@ export const demoClips: DemoClip[] = [
     media: {
       poster: placeholderPoster,
       alt: 'Quest builder canvas preview',
-      gif: '/imgs/showcase1.gif',
+      gif: getAssetPath('/imgs/showcase1.gif'),
     },
   },
   {
@@ -51,7 +58,7 @@ export const demoClips: DemoClip[] = [
     media: {
       poster: placeholderPoster,
       alt: 'Generated C# sample output',
-      gif: '/imgs/showcase2.gif',
+      gif: getAssetPath('/imgs/showcase2.gif'),
     },
   },
 ]
