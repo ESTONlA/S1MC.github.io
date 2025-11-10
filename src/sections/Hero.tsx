@@ -121,7 +121,7 @@ export function Hero() {
                 </span>
               </h1>
               <p className="max-w-prose text-lg text-s1-sand/80">
-                Generate quests and NPCs for S1API + MelonLoader with confident grids, refined motion, and a Roslyn-powered export pipeline.
+                Generate quests and NPCs for S1API + MelonLoader from a visual editor, with a Roslyn-powered export pipeline.
               </p>
             </div>
             <div className="flex flex-wrap gap-4">
