@@ -39,6 +39,7 @@ export const demoClips: DemoClip[] = [
     media: {
       poster: placeholderPoster,
       alt: 'Quest builder canvas preview',
+      gif: '/imgs/showcase1.gif',
     },
   },
   {
@@ -50,6 +51,7 @@ export const demoClips: DemoClip[] = [
     media: {
       poster: placeholderPoster,
       alt: 'Generated C# sample output',
+      gif: '/imgs/showcase2.gif',
     },
   },
 ]
@@ -63,7 +65,7 @@ export type HowItWorksStep = {
 export const howItWorksSteps: HowItWorksStep[] = [
   {
     title: 'Design',
-    description: 'Compose quests, NPCs, and triggers on a tactile, grid-aware canvas.',
+    description: 'Compose quests, NPCs, and triggers all in a visual editor.',
     icon: PenTool,
   },
   {
@@ -78,7 +80,7 @@ export const howItWorksSteps: HowItWorksStep[] = [
   },
   {
     title: 'Install',
-    description: 'Ship directly into MelonLoader with a single Mod entry point.',
+    description: 'Ship directly to the game with 1 click. Test your mod with the built in connector mod.',
     icon: PackageCheck,
   },
 ]

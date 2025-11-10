@@ -1,7 +1,29 @@
 import { ArrowUpRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { Badge, Button, Container } from '@/components/primitives'
 import { primaryCta, secondaryCta } from '@/data/content'
 import { useGitHubStats } from '@/hooks/useGitHubStats'
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
+
+const heroCopyVariant = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] as const } },
+}
+
+const heroCardVariant = {
+  hidden: { opacity: 0, y: 32, scale: 0.98 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] as const } },
+}
+
+const heroStatsContainerVariant = {
+  hidden: {},
+  visible: { transition: { delayChildren: 0.3, staggerChildren: 0.12 } },
+}
+
+const heroStatVariant = {
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.4, 0, 0.2, 1] as const } },
+}
 
 export function Hero() {
   const { stats, loading } = useGitHubStats()
@@ -26,6 +48,39 @@ export function Hero() {
     },
   ]
 
+  const prefersReducedMotion = usePrefersReducedMotion()
+  const heroCopyReveal = prefersReducedMotion
+    ? {}
+    : {
+        initial: 'hidden',
+        whileInView: 'visible',
+        viewport: { once: true, amount: 0.25 },
+        variants: heroCopyVariant,
+      }
+  const heroCardReveal = prefersReducedMotion
+    ? {}
+    : {
+        initial: 'hidden',
+        whileInView: 'visible',
+        viewport: { once: true, amount: 0.2 },
+        variants: heroCardVariant,
+      }
+  const heroStatsReveal = prefersReducedMotion
+    ? {}
+    : {
+        initial: 'hidden',
+        whileInView: 'visible',
+        viewport: { once: true, amount: 0.2 },
+        variants: heroStatsContainerVariant,
+      }
+  const heroStatItem = prefersReducedMotion ? {} : { variants: heroStatVariant }
+  const navLinkMotion = prefersReducedMotion
+    ? {}
+    : {
+        whileHover: { translateY: -2, scale: 1.03 },
+        transition: { type: 'spring' as const, stiffness: 200, damping: 20 },
+      }
+
   return (
     <header className="relative overflow-hidden bg-s1-ink text-s1-sand">
       <div className="pointer-events-none absolute inset-0 opacity-60">
@@ -38,20 +93,31 @@ export function Hero() {
             Schedule 1 Mod Creator
           </span>
           <div className="flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.3em] text-s1-sand/70">
-            <a href="#features" className="hover:text-s1-sand">Features</a>
-            <a href="#demo" className="hover:text-s1-sand">Demo</a>
-            <a href={secondaryCta.href} target="_blank" rel="noreferrer" className="hover:text-s1-sand">Docs</a>
+            <motion.a href="#features" className="hover:text-s1-sand" {...navLinkMotion}>
+              Features
+            </motion.a>
+            <motion.a href="#demo" className="hover:text-s1-sand" {...navLinkMotion}>
+              Demo
+            </motion.a>
+            <motion.a
+              href={secondaryCta.href}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-s1-sand"
+              {...navLinkMotion}
+            >
+              Docs
+            </motion.a>
           </div>
         </nav>
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-          <div className="space-y-8 lg:col-span-6">
+          <motion.div className="space-y-8 lg:col-span-6" {...heroCopyReveal}>
             <Badge className="border-0 bg-s1-forest/40 text-s1-sand">Built for S1API / MelonLoader</Badge>
             <div className="space-y-6">
               <h1 className="font-display text-4xl leading-tight tracking-tight text-s1-sand sm:text-5xl xl:text-6xl">
                 Create Schedule One mods visually.
                 <span className="relative mt-3 block">
                   Ship C# in minutes.
-                  <span className="absolute -bottom-2 left-0 h-1 w-32 rounded-full bg-s1-sand/70" aria-hidden="true" />
                 </span>
               </h1>
               <p className="max-w-prose text-lg text-s1-sand/80">
@@ -71,10 +137,10 @@ export function Hero() {
               </Button>
             </div>
             <p className="text-sm uppercase tracking-[0.3em] text-s1-sand/60">
-              Visual builder · Roslyn pipeline · WCAG AA+
+              Visual mod builder
             </p>
-          </div>
-          <div className="lg:col-span-6">
+          </motion.div>
+          <motion.div className="lg:col-span-6" {...heroCardReveal}>
             <div className="relative rounded-[20px] border border-s1-forest/40 bg-gradient-to-br from-s1-deep/70 to-s1-ink/80 p-8 shadow-card">
               <div className="absolute inset-x-10 top-6 h-16 rounded-full bg-s1-sand/10 blur-3xl" aria-hidden="true" />
               <div className="relative space-y-6">
@@ -104,7 +170,7 @@ export function Hero() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   {heroStats.map((stat) => (
                     <div
-                      key={stat.label}
+                      key={`${stat.label}-sm`}
                       className="rounded-[14px] border border-s1-forest/30 bg-s1-deep/40 px-4 py-3 text-xs uppercase tracking-[0.3em] text-s1-sand/80"
                     >
                       {stat.label}
@@ -117,7 +183,7 @@ export function Hero() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </Container>
     </header>

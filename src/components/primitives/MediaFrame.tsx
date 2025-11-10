@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Pause, Play } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
 import type { DemoClip } from '@/data/content'
@@ -13,6 +14,7 @@ export function MediaFrame({ clip }: MediaFrameProps) {
   const [paused, setPaused] = useState(prefersReducedMotion)
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const hasVideo = Boolean(clip.media.mp4)
+  const hasGif = Boolean(clip.media.gif)
 
   useEffect(() => {
     setPaused(prefersReducedMotion)
@@ -31,12 +33,30 @@ export function MediaFrame({ clip }: MediaFrameProps) {
   }, [paused])
 
   return (
-    <figure className="flex flex-col">
+    <motion.figure
+      className="flex flex-col"
+      {...(prefersReducedMotion
+        ? {}
+        : {
+            initial: { opacity: 0, y: 30 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true, amount: 0.35 },
+            transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] as const },
+          })}
+      {...(prefersReducedMotion
+        ? {}
+        : {
+            whileHover: {
+              scale: 1.01,
+              transition: { type: 'spring', stiffness: 180, damping: 24 },
+            },
+          })}
+    >
       <div className="relative overflow-hidden rounded-[18px] border border-s1-forest/40 bg-s1-ink/40 shadow-card">
         {hasVideo ? (
           <video
             ref={videoRef}
-            className="aspect-[4/3] w-full object-cover"
+            className="aspect-[1920/1002] w-full object-cover"
             playsInline
             muted
             loop
@@ -45,12 +65,16 @@ export function MediaFrame({ clip }: MediaFrameProps) {
             aria-label={clip.media.alt}
           >
             {clip.media.mp4 ? <source src={clip.media.mp4} type="video/mp4" /> : null}
-            {clip.media.gif ? (
-              <img src={clip.media.gif} alt={clip.media.alt} loading="lazy" />
-            ) : null}
           </video>
+        ) : hasGif ? (
+          <img
+            src={clip.media.gif}
+            alt={clip.media.alt}
+            className="aspect-[1920/1002] w-full object-cover"
+            loading="lazy"
+          />
         ) : (
-          <div className="flex aspect-[4/3] w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-s1-ink to-s1-deep text-center">
+          <div className="flex aspect-[1920/1002] w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-s1-ink to-s1-deep text-center">
             <p className="text-sm uppercase tracking-[0.4em] text-s1-sand/70">Demo loop</p>
             <p className="max-w-[18ch] text-base text-s1-sand/90">Production media slot reserved – assets ship with editor capture.</p>
           </div>
@@ -85,6 +109,6 @@ export function MediaFrame({ clip }: MediaFrameProps) {
         </div>
         <p className="text-xs text-s1-sand/60">{clip.caption}</p>
       </figcaption>
-    </figure>
+    </motion.figure>
   )
 }
