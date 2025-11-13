@@ -152,10 +152,10 @@ export const credibilityLogos: Logo[] = [
 
 export const primaryCta = {
   label: 'Try the Editor',
-  href: '#download',
+  href: 'https://github.com/S1M0D/ModcreatorSchedule1/releases/latest',
 }
 
 export const secondaryCta = {
   label: 'Docs on GitHub',
-  href: 'https://github.com/ESTONlA/ModcreatorSchedule1',
+  href: 'https://github.com/S1M0D/ModcreatorSchedule1/wiki',
 }
