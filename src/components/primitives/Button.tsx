@@ -7,11 +7,11 @@ export type ButtonVariant = 'primary' | 'secondary' | 'ghost'
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-s1-sand text-s1-ink hover:bg-s1-sand-dark focus-visible:outline-s1-sand/80',
+    'bg-s1-sand text-s1-ink shadow-glow hover:bg-s1-sand-dark hover:shadow-glow/80 focus-visible:outline-s1-sand/80 active:translate-y-[1px] transition-all duration-200',
   secondary:
-    'border border-s1-forest/50 text-s1-sand hover:border-s1-sand focus-visible:outline-s1-sand/60',
+    'border border-s1-forest/50 bg-layer-1/50 text-s1-sand shadow-highlight hover:border-s1-sand hover:bg-layer-1 focus-visible:outline-s1-sand/60 active:translate-y-[1px] transition-all duration-200',
   ghost:
-    'text-s1-sand/80 hover:text-s1-sand focus-visible:outline-s1-sand/50',
+    'text-s1-sand/80 hover:text-s1-sand hover:bg-layer-1/30 focus-visible:outline-s1-sand/50 active:translate-y-[1px] transition-all duration-200',
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

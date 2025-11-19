@@ -6,10 +6,12 @@ import { FeaturesGrid } from '@/sections/FeaturesGrid'
 import { CredibilityStrip } from '@/sections/CredibilityStrip'
 import { CallToAction } from '@/sections/CallToAction'
 import { SiteFooter } from '@/sections/SiteFooter'
+import { AtmosphericBackground } from '@/components/ui/AtmosphericBackground'
 
 function App() {
   return (
-    <div className="min-h-screen bg-s1-ink text-s1-sand">
+    <div className="min-h-screen text-s1-sand">
+      <AtmosphericBackground />
       <Hero />
       <main>
         <VisualDemo />

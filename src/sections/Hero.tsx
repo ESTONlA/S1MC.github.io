@@ -52,37 +52,37 @@ export function Hero() {
   const heroCopyReveal = prefersReducedMotion
     ? {}
     : {
-        initial: 'hidden',
-        whileInView: 'visible',
-        viewport: { once: true, amount: 0.25 },
-        variants: heroCopyVariant,
-      }
+      initial: 'hidden',
+      whileInView: 'visible',
+      viewport: { once: true, amount: 0.25 },
+      variants: heroCopyVariant,
+    }
   const heroCardReveal = prefersReducedMotion
     ? {}
     : {
-        initial: 'hidden',
-        whileInView: 'visible',
-        viewport: { once: true, amount: 0.2 },
-        variants: heroCardVariant,
-      }
+      initial: 'hidden',
+      whileInView: 'visible',
+      viewport: { once: true, amount: 0.2 },
+      variants: heroCardVariant,
+    }
   const heroStatsReveal = prefersReducedMotion
     ? {}
     : {
-        initial: 'hidden',
-        whileInView: 'visible',
-        viewport: { once: true, amount: 0.2 },
-        variants: heroStatsContainerVariant,
-      }
+      initial: 'hidden',
+      whileInView: 'visible',
+      viewport: { once: true, amount: 0.2 },
+      variants: heroStatsContainerVariant,
+    }
   const heroStatItem = prefersReducedMotion ? {} : { variants: heroStatVariant }
   const navLinkMotion = prefersReducedMotion
     ? {}
     : {
-        whileHover: { translateY: -2, scale: 1.03 },
-        transition: { type: 'spring' as const, stiffness: 200, damping: 20 },
-      }
+      whileHover: { translateY: -2, scale: 1.03 },
+      transition: { type: 'spring' as const, stiffness: 200, damping: 20 },
+    }
 
   return (
-    <header className="relative overflow-hidden bg-s1-ink text-s1-sand">
+    <header className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-s1-ink text-s1-sand">
       <div className="pointer-events-none absolute inset-0 opacity-60">
         <div className="absolute -left-32 top-16 h-72 w-72 rounded-full bg-s1-forest/40 blur-[120px]" />
         <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-s1-sand/20 blur-[140px]" />
@@ -112,11 +112,11 @@ export function Hero() {
         </nav>
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           <motion.div className="space-y-8 lg:col-span-6" {...heroCopyReveal}>
-            <Badge className="border-0 bg-s1-forest/40 text-s1-sand">Built for S1API & MelonLoader</Badge>
+            <Badge className="border-0 bg-s1-forest/40 text-s1-sand shadow-highlight backdrop-blur-sm">Built for S1API & MelonLoader</Badge>
             <div className="space-y-6">
               <h1 className="font-display text-4xl leading-tight tracking-tight text-s1-sand sm:text-5xl xl:text-6xl">
                 Create Schedule One mods visually.
-                <span className="relative mt-3 block">
+                <span className="relative mt-3 block bg-gradient-to-b from-s1-sand to-s1-sand/60 bg-clip-text text-transparent">
                   Ship C# in minutes.
                 </span>
               </h1>
@@ -141,8 +141,8 @@ export function Hero() {
             </p>
           </motion.div>
           <motion.div className="lg:col-span-6" {...heroCardReveal}>
-            <div className="orbit-panel relative rounded-[20px] border border-s1-forest/40 bg-gradient-to-br from-s1-deep/70 to-s1-ink/80 p-8 shadow-card">
-              <div className="absolute inset-x-10 top-6 h-16 rounded-full bg-s1-sand/10 blur-3xl" aria-hidden="true" />
+            <div className="orbit-panel relative rounded-[20px] border border-s1-forest/40 bg-layer-2 p-8 shadow-card-strong">
+              <div className="absolute inset-x-10 top-6 h-16 rounded-full bg-s1-sand/5 blur-3xl" aria-hidden="true" />
               <div className="orbit-panel-inner relative space-y-6">
                 <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-s1-sand/70">
                   <span>Live canvas</span>
@@ -151,18 +151,18 @@ export function Hero() {
                     <ArrowUpRight size={14} />
                   </span>
                 </div>
-                <div className="rounded-[16px] border border-s1-forest/30 bg-s1-ink/40 p-6">
+                <div className="rounded-[16px] border border-s1-forest/30 bg-layer-1/50 p-6 shadow-inner">
                   <ul className="space-y-4 text-sm text-s1-sand/80">
                     <li className="flex items-start gap-3">
-                      <span className="mt-1 h-2 w-2 rounded-full bg-s1-sand" />
+                      <span className="mt-1 h-2 w-2 rounded-full bg-s1-sand shadow-glow" />
                       Visual Blueprint Editors for Quests, NPCs, and more.
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="mt-1 h-2 w-2 rounded-full bg-s1-sand" />
+                      <span className="mt-1 h-2 w-2 rounded-full bg-s1-sand shadow-glow" />
                       Configure triggers, rewards, NPC states, and more.
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="mt-1 h-2 w-2 rounded-full bg-s1-sand" />
+                      <span className="mt-1 h-2 w-2 rounded-full bg-s1-sand shadow-glow" />
                       Export MelonMod-ready C# in a single click, or compile your mod directly in the editor.
                     </li>
                   </ul>
@@ -171,7 +171,7 @@ export function Hero() {
                   {heroStats.map((stat) => (
                     <div
                       key={`${stat.label}-sm`}
-                      className="orbit-panel rounded-[14px] border border-s1-forest/30 bg-s1-deep/40 text-xs uppercase tracking-[0.3em] text-s1-sand/80"
+                      className="orbit-panel rounded-[14px] border border-s1-forest/30 bg-layer-1 text-xs uppercase tracking-[0.3em] text-s1-sand/80 shadow-elevation"
                     >
                       <div className="orbit-panel-inner px-4 py-3">
                         {stat.label}

@@ -16,7 +16,23 @@
   }
 
   body {
-    @apply bg-s1-ink font-sans text-s1-sand antialiased;
+    @apply bg-s1-ink font-sans text-s1-sand antialiased relative;
+  }
+
+  ::selection {
+    @apply bg-s1-sand/20 text-s1-sand;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-s1-ink;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-s1-forest/30 rounded-full border-[3px] border-solid border-s1-ink hover:bg-s1-forest/50 transition-colors;
   }
 
   h1,
@@ -42,15 +58,13 @@
     pointer-events: none;
     z-index: 0;
     --orbit-angle: 0deg;
-    background: conic-gradient(
-        from var(--orbit-angle),
+    background: conic-gradient(from var(--orbit-angle),
         rgba(36, 61, 55, 0) 0 55%,
         rgba(231, 204, 159, 0.45) 62%,
         rgba(36, 61, 55, 0) 70%,
         rgba(46, 71, 74, 0.7) 78%,
         rgba(231, 204, 159, 0.65) 90%,
-        rgba(36, 61, 55, 0) 100%
-      );
+        rgba(36, 61, 55, 0) 100%);
     animation: orbit-panel-outline-spin 5s linear infinite;
     -webkit-mask: linear-gradient(#0B1921 0 0) content-box, linear-gradient(#0B1921 0 0);
     -webkit-mask-composite: xor;

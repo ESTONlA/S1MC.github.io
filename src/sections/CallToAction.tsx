@@ -7,7 +7,7 @@ import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
 export function CallToAction() {
   const prefersReducedMotion = usePrefersReducedMotion()
   const sectionRef = useRef<HTMLElement>(null)
-  
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start center', 'start 0.1'],
@@ -21,7 +21,7 @@ export function CallToAction() {
     <motion.section ref={sectionRef} id="download" className="bg-s1-ink py-24 text-s1-sand">
       <Container>
         <motion.div
-          className="orbit-panel rounded-[24px] border border-s1-forest/40 bg-gradient-to-br from-s1-deep/70 to-s1-ink/80 shadow-card"
+          className="orbit-panel rounded-[24px] border border-s1-forest/40 bg-layer-2 shadow-card-strong"
           style={{
             opacity: prefersReducedMotion ? 1 : cardOpacity,
             y: prefersReducedMotion ? 0 : cardY,
